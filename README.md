@@ -1,1 +1,0 @@
-# Diabetics_Prediction_model
