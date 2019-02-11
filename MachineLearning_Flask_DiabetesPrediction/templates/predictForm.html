@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DPS - Disease Prediction System</title>
+    <link rel="stylesheet" href="https://unpkg.com/neo-assets@1/dist/css/neo.min.css">
+
+    <link rel="stylesheet" href="/static/styles_added.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://unpkg.com/neo-assets@1/dist/js/neo.min.js"></script>
+    <script src="/static/ajs.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default menu-header menu-shadow" id="autocollapse">
+        <div class="container-fluid">
+            <div class="navbar-header pull-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-test" aria-expanded="false" id="menu-button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-left logo" href="javascript:;"><img src="/static/matrixcare-logo.svg"></a>
+            </div>
+            <div class="navbar-header pull-right">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">(UI & Development) <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:;">Profile</a>
+                                <a href="javascript:;">Change Password</a>
+                                <a href="javascript:;">Log off</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- 		<div class="clearfix visible-xs-block visible-sm-block"></div> -->
+        </div>
+    </nav>
+
+    <div class="mainbody">
+
+        <h1>Diabetes Prediction System</h1>
+
+        <div id="select-disease">
+            <div class="row lrmar5n">
+                <div class="col-sm-6 rpad10"><div class="form-group"><button type="button" class="btn btn-toggle w100 h150p fsize20" onmouseenter="$(this).toggleClass('toggle-primary')" onmouseleave="$(this).toggleClass('toggle-primary')" onclick="$('#select-disease').toggle(); $('#diabetic-disease').toggle();" data-toggle="button"><i class="fa fa-human"></i> Diabetic Prediction System</button></div></div>
+                <div class="vspacer15 visible-xs"></div>
+                <div class="col-sm-6 lpad10"><div class="form-group"><button type="button" class="btn btn-toggle w100 h150p fsize20" onmouseenter="$(this).toggleClass('toggle-primary')" onmouseleave="$(this).toggleClass('toggle-primary')" data-toggle="button">Cancer Prediction System</button></div></div>
+            </div>
+        </div>
+
+        <div id="diabetic-disease" style="display:none;">
+            <form  action="" method="post" role="form">
+            {{ form.csrf }}
+            <div class="row lrmar10n">
+                <div class="col-sm-9 rbord rpad10">
+
+                    <div class="form-group col-sm-4">
+                        <label for="pregnancies">Pregnancies</label>
+                        <input type="text" class="form-control" id="pregnancies" name="pregnancies">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="glucoselevel">Glucose Level</label>
+                        <input type="text" class="form-control" id="glucoselevel" name="glucoselevel">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="bp">BloodPressure</label>
+                        <input type="text" class="form-control" id="bp" name="bp">
+
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="skinthickness">Skin Thickness</label>
+                        <input type="text" class="form-control" id="skinthickness" name="skinthickness">
+                    </div>
+                     <div class="form-group col-sm-4">
+                        <label for="insulin">Insulin</label>
+                        <input type="text" class="form-control" id="insulin" name="insulin">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="bmi">Body Mass Index</label>
+                        <input type="text" class="form-control" id="bmi" name="bmi">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="dpf">Diabetes Pedigree Function</label>
+                        <input type="text" class="form-control" id="dpf" name="dpf">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="age">Age</label>
+                        <input type="text" class="form-control" id="age" name="age">
+                    </div>
+
+
+                </div>
+                <div class="col-sm-3 lpad10">
+                    <button class="w100 btn btn-success fsize18 vmid-flex tmar10" id="btnGreen1"disabled="" style="white-space:normal;">No Diabetes. Keep the good healthy habit</button>
+                    <button class="w100 btn btn-danger fsize18 vmid-flex tmar10" id="btnRed" disabled="" style="white-space:normal;">You have the possibility of diabetes. Consult your doctor immediately</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+
+                    <!--<input type="button" value="Submit"  class="fgblue" />-->
+                    <button class="w50 btn btn-success fsize18 vmid-flex tmar10" id="btnGreenSubmit" onclick="check(eve)" style="white-space:normal; background-color: #3472f7;">Submit</button>
+                    </div>
+
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="text-muted"><i class="fa fa-copyright"></i> Copyright 2002-2017, <a href="http://www.matrixcare.com/" target="_blank">MatrixCare, Inc</a>. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    $(document).ready(function() {
+        $().neo();
+    });
+    </script>
+
+    <!-- Bootstrap Datetimepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+    $(function () {
+        $('#datepicker').datetimepicker();
+        $('#timepicker').datetimepicker({
+            format: 'LT'
+        });
+    });
+    </script>
+</body>
+</html>
